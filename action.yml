@@ -25,7 +25,7 @@ runs:
         if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
 
         mkdir -p dist
-        docker run -v $(pwd)/dist:/src/dist ghcr.io/omegion/helm-charts-docs:v0.8.0
+        docker run -v $(pwd)/dist:/src/dist -v $(pwd)/index.yaml:/src/index.yaml ghcr.io/omegion/helm-charts-docs:v0.8.0
 
         cd dist
         git init
