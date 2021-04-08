@@ -1,0 +1,93 @@
+// Set your colors
+$primary: rgb(55, 85, 190);
+$primary-light: rgb(243, 245, 251);
+$primary-dark: rgb(27, 31, 59);
+$primary-invert: findColorInvert($primary);
+
+$secondary: rgb(255, 142, 136);
+$secondary-light: rgba(255, 142, 136, 0.2);
+$secondary-dark: findDarkColor($secondary);
+$secondary-invert: findColorInvert($secondary);
+
+$success-dark: rgba($success, 0.3);
+$success-dark-invert: $success;
+
+$white-ter: hsl(0, 0%, 82%);
+$white-bis: hsl(0, 0%, 95%);
+
+// Lists and maps
+$custom-colors: null !default;
+$custom-shades: null !default;
+
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: mergeColorMaps(
+  (
+    "white": (
+      $white,
+      $black,
+    ),
+    "black": (
+      $black,
+      $white,
+    ),
+    "light": (
+      $light,
+      $light-invert,
+    ),
+    "primary": (
+      $primary,
+      $primary-invert,
+      $primary-light,
+      $primary-dark,
+    ),
+    "primary-dark": (
+      $primary-dark,
+      $white,
+    ),
+    "primary-light": (
+      $primary-light,
+      $white,
+    ),
+    "secondary": (
+      $secondary,
+      $secondary-invert,
+      $secondary-light,
+      $secondary-dark,
+    ),
+    "link": (
+      $link,
+      $link-invert,
+      $link-light,
+      $link-dark,
+    ),
+    "info": (
+      $info,
+      $info-invert,
+      $info-light,
+      $info-dark,
+    ),
+    "success-dark": (
+      $success-dark,
+      $success-dark-invert,
+    ),
+    "success": (
+      $success,
+      $success-invert,
+      $success-light,
+      $success-dark,
+    ),
+    "warning": (
+      $warning,
+      $warning-invert,
+      $warning-light,
+      $warning-dark,
+    ),
+    "danger": (
+      $danger,
+      $danger-invert,
+      $danger-light,
+      $danger-dark,
+    ),
+  ),
+  $custom-colors
+);

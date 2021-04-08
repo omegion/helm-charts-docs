@@ -1,0 +1,24 @@
+// Typography
+$family-sans-serif: "Inter", sans-serif;
+$family-primary: $family-sans-serif;
+$family-secondary: "Inter", sans-serif;
+
+// Navbar
+$navbar-height: 4.75rem;
+
+// Utils
+$radius: 0.5rem;
+$radius-large: 0.75rem;
+
+// Card
+$card-header-shadow: 0;
+$card-radius: $radius-large;
+$card-shadow: 0;
+
+// Breadcrumb
+$breadcrumb-item-color: $primary;
+$breadcrumb-item-hover-color: $primary-dark;
+$breadcrumb-item-padding-horizontal: 0.5em;
+
+// Hero
+$hero-body-padding-medium: 7rem 4.5rem;

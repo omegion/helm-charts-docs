@@ -1,0 +1,44 @@
+name: 'Helm Chart Docs Github Pages'
+branding:
+  icon: 'activity'
+  color: 'blue'
+description: 'This Action will generate your static Helm Chart Docs and deploy it to Github Pages'
+inputs:
+  username:
+    description: 'Your username'
+    required: true
+  reponame:
+    description: 'Your reponame'
+    required: true
+  token:
+    description: 'Your Github token'
+    required: true
+  gitemail:
+    description: 'Your git commit email'
+    required: false
+    default: 'CI@example.com'
+  gitname:
+    description: 'Your git commit name'
+    required: false
+    default: 'CI'
+  gitmsg:
+    description: 'Your git commit message'
+    required: false
+    default: 'deploy'
+runs:
+  using: "composite"
+  steps:
+    - name: Build and generate nuxt
+      run: |
+        npm ci
+        npm run build
+        npm run generate
+        cd dist
+        if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
+        git config --global user.email "${{ inputs.gitemail }}"
+        git config --global user.name "${{ inputs.gitname }}"
+        git init
+        git add -A
+        git commit -m '${{ inputs.gitmsg }}'
+        git push -f https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.username }}/${{ inputs.reponame }}.git master:gh-pages
+      shell: bash
