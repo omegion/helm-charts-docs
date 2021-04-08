@@ -11,6 +11,10 @@ inputs:
     description: 'Your git commit message'
     required: false
     default: 'Deploy Helm Charts Docs'
+  branch:
+    description: 'Your git commit message'
+    required: false
+    default: 'gh-pages'
 runs:
   using: composite
   steps:
@@ -28,8 +32,8 @@ runs:
         docker run -v $(pwd)/dist:/src/dist -v $(pwd)/index.yaml:/src/index.yaml ghcr.io/omegion/helm-charts-docs:v0.8.0
 
         cd dist
-        git init
+        git checkout ${{ inputs.branch }}
         git add -A
         git commit -m '${{ inputs.commitMessage }}'
-        git push -f https://"$owner":${{ inputs.token }}@github.com/"$owner"/"$repo".git master:gh-pages
+        git push origin ${{ inputs.branch }}
       shell: bash
