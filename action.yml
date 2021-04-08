@@ -28,11 +28,8 @@ runs:
 
         if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
 
-        mkdir -p dist
-        docker run -v $(pwd)/dist:/src/dist -v $(pwd)/index.yaml:/src/index.yaml ghcr.io/omegion/helm-charts-docs:v0.8.0
-
-        cd dist
         git checkout ${{ inputs.branch }}
+        docker run -v $(pwd):/src/dist -v $(pwd)/index.yaml:/src/index.yaml ghcr.io/omegion/helm-charts-docs:v0.8.0
         git add -A
         git commit -m '${{ inputs.commitMessage }}'
         git push origin ${{ inputs.branch }}
