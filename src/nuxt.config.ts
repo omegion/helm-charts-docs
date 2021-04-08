@@ -2,7 +2,8 @@ const VERSION = require("./package.json").version;
 
 const config = {
     target: "static",
-
+    ssr: false,
+    
     head: {
         title: "Helm Charts",
         htmlAttrs: {

@@ -15,6 +15,10 @@ jobs:
         env:
           CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - run: |
+          cd src
+          cp test.yaml index.yaml
+
       - name: Helm Charts Docs
         uses: ./ # Uses an action in the root directory
         id: helm_charts_docs
