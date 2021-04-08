@@ -26,7 +26,7 @@ inputs:
     required: false
     default: 'deploy'
 runs:
-  using: "composite"
+  using: node14
   steps:
     - name: Build and generate nuxt
       run: |
