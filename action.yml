@@ -30,7 +30,7 @@ runs:
 
         git checkout -f ${{ inputs.branch }}
         docker run -v $(pwd)/dist:/src/dist -v $(pwd)/index.yaml:/src/index.yaml ghcr.io/omegion/helm-charts-docs:v0.8.0
-        sudo cp dist/* $(pwd)
+        sudo cp -r dist/* $(pwd)
 
         git add -A
         git commit -m '${{ inputs.commitMessage }}'
