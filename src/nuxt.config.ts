@@ -3,7 +3,7 @@ const VERSION = require("./package.json").version;
 const config = {
     target: "static",
     ssr: false,
-    
+
     head: {
         title: "Helm Charts",
         htmlAttrs: {
@@ -30,7 +30,8 @@ const config = {
     },
 
     router: {
-        base: process.env.NODE_ENV !== "production" ? "/" : "./"
+        base: process.env.NODE_ENV !== "production" ? "/" : "./",
+        mode: 'hash'
     },
 
     generate: {
