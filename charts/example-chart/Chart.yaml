@@ -1,6 +1,7 @@
 apiVersion: v2
 name: example-chart
 description: A Helm chart for Kubernetes
+home: "https://charts.omegion.dev"
 
 # A chart can be either an 'application' or a 'library' chart.
 #
