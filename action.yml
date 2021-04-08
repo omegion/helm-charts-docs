@@ -34,4 +34,6 @@ runs:
         git add -A
         git commit -m '${{ inputs.commitMessage }}'
         git push origin ${{ inputs.branch }}
+
+        sudo rm -r dist src
       shell: bash
