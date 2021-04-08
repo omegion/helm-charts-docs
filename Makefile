@@ -1,5 +1,5 @@
 .PHONY: cut-tag
 cut-tag:
-	@echo "Cutting v$(version)"
-	git tag v$(version)
-	git push origin v$(version)
+	@echo "Cutting $(version)"
+	git tag $(version)
+	git push origin $(version)
