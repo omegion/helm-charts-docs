@@ -30,9 +30,8 @@ runs:
   steps:
     - name: Build and generate nuxt
       run: |
-        npm ci
-        npm run build
-        npm run generate
+        yarn install
+        yarn generate
         cd dist
         if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
         git config --global user.email "${{ inputs.gitemail }}"
