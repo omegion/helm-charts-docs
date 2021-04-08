@@ -24,6 +24,8 @@ runs:
 
         if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
 
+        docker run ghcr.io/omegion/helm-charts-docs:v0.7.0 ls
+
         cd src
         yarn install
         yarn generate
