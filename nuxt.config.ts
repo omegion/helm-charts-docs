@@ -28,6 +28,14 @@ const config = {
     height: "0px"
   },
 
+  router: {
+    base: "./"
+  },
+
+  generate: {
+    fallback: "index.html"
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { ssr: true, src: "@/plugins/buefy.ts" },
