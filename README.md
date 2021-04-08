@@ -1,21 +1,28 @@
-# Hello world docker action
+# Helm Chart Docs
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+Centralized Helm Chart documentation page.
 
-## Inputs
+## Usage
 
-### `who-to-greet`
+```yaml
+- name: Helm Chart Docs Github Pages
+  uses: omegion/helm-charts-docs@v0.14.0
+  with:
+    token: ${{ secrets.GITHUB_TOKEN }}
+```
 
-**Required** The name of the person to greet. Default `"World"`.
+## Action Spec:
 
-## Outputs
+### Environment variables
 
-### `time`
+- None
 
-The time we greeted you.
+### Inputs
 
-## Example usage
+- `token`   - GitHub token.
+- `branch`  - GitHub repository branch for pages.
 
-uses: actions/hello-world-docker-action@v1
-with:
-who-to-greet: 'Mona the Octocat'
+### Outputs
+
+- None
+
