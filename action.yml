@@ -26,18 +26,21 @@ inputs:
     required: false
     default: 'deploy'
 runs:
-  using: node12
+  using: composite
   steps:
     - name: Build and generate nuxt
       run: |
+        owner=$(cut -d '/' -f 1 <<< "$GITHUB_REPOSITORY")
+        repo=$(cut -d '/' -f 2 <<< "$GITHUB_REPOSITORY")
+
         yarn install
         yarn generate
         cd dist
         if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
-        git config --global user.email "${{ inputs.gitemail }}"
-        git config --global user.name "${{ inputs.gitname }}"
+        git config --global user.email "$owner@users.noreply.github.com"
+        git config --global user.name "$owner"
         git init
         git add -A
         git commit -m '${{ inputs.gitmsg }}'
-        git push -f https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.username }}/${{ inputs.reponame }}.git master:gh-pages
+        git push -f https://"$owner":${{ inputs.token }}@github.com/"$owner"/"$repo".git master:gh-pages
       shell: bash
