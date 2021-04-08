@@ -1,5 +1,5 @@
 <template>
-  <b-navbar type="is-primary" wrapper-class="container">
+  <b-navbar type="is-primary-dark" wrapper-class="container">
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
         <a href="#" class="has-text-weight-bold is-size-5 has-text-white">
@@ -12,7 +12,7 @@
     <template #end>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <b-button type="is-primary" icon-left="github">
+          <b-button type="is-primary-dark" icon-left="github" tag="a" :href="githubRepo">
             <span>GitHub</span>
           </b-button>
         </div>
@@ -21,9 +21,17 @@
   </b-navbar>
 </template>
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api";
+import {computed, defineComponent} from "@vue/composition-api";
+import {useContext} from "@nuxtjs/composition-api";
 
 export default defineComponent({
-  name: "Navbar"
+  name: "Navbar",
+  setup() {
+    const {$config} = useContext()
+
+    const githubRepo = computed(() => $config.githubRepository)
+
+    return {githubRepo}
+  }
 });
 </script>

@@ -4,27 +4,13 @@ branding:
   color: 'blue'
 description: 'This Action will generate your static Helm Chart Docs and deploy it to Github Pages'
 inputs:
-  username:
-    description: 'Your username'
-    required: true
-  reponame:
-    description: 'Your reponame'
-    required: true
   token:
     description: 'Your Github token'
     required: true
-  gitemail:
-    description: 'Your git commit email'
-    required: false
-    default: 'CI@example.com'
-  gitname:
-    description: 'Your git commit name'
-    required: false
-    default: 'CI'
-  gitmsg:
+  commitMessage:
     description: 'Your git commit message'
     required: false
-    default: 'deploy'
+    default: 'Deploy Helm Charts Docs'
 runs:
   using: composite
   steps:
@@ -33,14 +19,18 @@ runs:
         owner=$(cut -d '/' -f 1 <<< "$GITHUB_REPOSITORY")
         repo=$(cut -d '/' -f 2 <<< "$GITHUB_REPOSITORY")
 
-        yarn install
-        yarn generate
-        cd dist
-        if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
         git config --global user.email "$owner@users.noreply.github.com"
         git config --global user.name "$owner"
+
+        if [ "none" !=  ${{ inputs.cname }} ]; then echo '${{ inputs.cname }}' > CNAME; fi
+
+        cd src
+        yarn install
+        yarn generate
+
+        cd dist
         git init
         git add -A
-        git commit -m '${{ inputs.gitmsg }}'
+        git commit -m '${{ inputs.commitMessage }}'
         git push -f https://"$owner":${{ inputs.token }}@github.com/"$owner"/"$repo".git master:gh-pages
       shell: bash

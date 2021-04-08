@@ -3,7 +3,7 @@ on: [ push ]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Test Helm Charts Docs
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -13,14 +13,12 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@master
         env:
-          CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Hello world action step
+      - name: Helm Charts Docs
         uses: ./ # Uses an action in the root directory
-        id: hello
+        id: helm_charts_docs
         with:
-          username: 'omegion'
-          reponame: 'helm-charts-docs'
           token: ${{ secrets.GITHUB_TOKEN }}
 #      - name: Get the output time
 #        run: echo "The time was ${{ steps.hello.outputs.time }}"

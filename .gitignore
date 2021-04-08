@@ -1,4 +1,4 @@
-yarn.lock
+src/yarn.lock
 node_modules
 .idea
 .nuxt
