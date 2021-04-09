@@ -69,9 +69,10 @@ const config = {
   publicRuntimeConfig: {
     isProduction: process.env.NODE_ENV === "production",
     appVersion: VERSION,
-    githubRepository: process.env.GITHUB_REPO,
-    helmRepoName: process.env.HELM_REPO_NAME,
-    helmRepoUrl: process.env.HELM_REPO_URL
+    githubRepository:
+      process.env.GITHUB_REPO || "https://github.com/omegion/helm-charts-docs/",
+    helmRepoName: process.env.HELM_REPO_NAME || "omegion",
+    helmRepoUrl: process.env.HELM_REPO_URL || "https://charts.omegion.dev"
   }
 };
 

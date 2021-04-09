@@ -40,9 +40,9 @@ runs:
 
         git checkout -f ${{ inputs.branch }}
         docker run \
-          --build-arg GITHUB_REPO=$repo \
-          --build-arg HELM_REPO_NAME=${{ inputs.helmRepository }} \
-          --build-arg HELM_REPO_URL=${{ inputs.helmRepositoryUrl }} \
+          -e GITHUB_REPO=$repo \
+          -e HELM_REPO_NAME=${{ inputs.helmRepository }} \
+          -e HELM_REPO_URL=${{ inputs.helmRepositoryUrl }} \
           -v $(pwd)/dist:/src/dist \
           -v $(pwd)/index.yaml:/src/index.yaml ghcr.io/omegion/helm-charts-docs:${{ inputs.dockerImageVersion }}
         sudo cp -r dist/* $(pwd)

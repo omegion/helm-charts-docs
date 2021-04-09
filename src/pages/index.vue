@@ -16,7 +16,7 @@
               <div class="columns">
                 <div class="column is-8">
                   <div class="section pt-0 pb-3">
-                    <p class="subtitle is-size-3">Install Helm Repo</p>
+                    <p class="subtitle is-size-4">Install Helm Repo</p>
                     <HelmRepoInstall />
                   </div>
                 </div>
