@@ -1,5 +1,8 @@
 <template>
-  <b-navbar type="is-primary-dark" wrapper-class="container">
+  <b-navbar
+      :type="type"
+      :shadow="shadow"
+      wrapper-class="container section py-0">
     <template #brand>
       <b-navbar-item tag="router-link" :to="{ path: '/' }">
         <a href="#" class="has-text-weight-bold is-size-5 has-text-white">
@@ -26,6 +29,16 @@ import {useContext} from "@nuxtjs/composition-api";
 
 export default defineComponent({
   name: "Navbar",
+  props: {
+    type: {
+      type: String,
+      default: "is-primary-dark",
+    },
+    shadow: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
     const {$config} = useContext()
 

@@ -15,6 +15,14 @@ inputs:
     description: 'Your git commit message'
     required: false
     default: 'gh-pages'
+  helmRepository:
+    description: 'Docker image version'
+    required: false
+    default: 'omegion'
+  helmRepositoryUrl:
+    description: 'Docker image version'
+    required: false
+    default: 'https://charts.omegion.dev'
   dockerImageVersion:
     description: 'Docker image version'
     required: false
@@ -31,7 +39,12 @@ runs:
         git config --global user.name "$owner"
 
         git checkout -f ${{ inputs.branch }}
-        docker run -v $(pwd)/dist:/src/dist -v $(pwd)/index.yaml:/src/index.yaml ghcr.io/omegion/helm-charts-docs:${{ inputs.dockerImageVersion }}
+        docker run \
+          --build-arg GITHUB_REPO=$repo \
+          --build-arg HELM_REPO_NAME=${{ inputs.helmRepository }} \
+          --build-arg HELM_REPO_URL=${{ inputs.helmRepositoryUrl }} \
+          -v $(pwd)/dist:/src/dist \
+          -v $(pwd)/index.yaml:/src/index.yaml ghcr.io/omegion/helm-charts-docs:${{ inputs.dockerImageVersion }}
         sudo cp -r dist/* $(pwd)
         sudo rm -r dist src || true
 

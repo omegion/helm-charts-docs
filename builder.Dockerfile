@@ -1,7 +1,14 @@
 # build stage
 FROM node:lts-alpine as build-stage
 
+ARG GITHUB_REPO
+ARG HELM_REPO_NAME
+ARG HELM_REPO_URL
+
 ENV APP_HOME=/src
+ENV GITHUB_REPO=$GITHUB_REPO
+ENV HELM_REPO_NAME=$HELM_REPO_NAME
+ENV HELM_REPO_URL=$HELM_REPO_URL
 
 # install alpine dependencies
 RUN apk update --no-cache \

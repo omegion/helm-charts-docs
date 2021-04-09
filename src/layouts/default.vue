@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <Navbar/>
+    <portal-target name="hero"></portal-target>
     <Nuxt/>
     <Footer/>
   </div>

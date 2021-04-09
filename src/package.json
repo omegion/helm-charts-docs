@@ -24,6 +24,8 @@
     "js-yaml-loader": "^1.2.2",
     "moment": "^2.29.1",
     "node-sass": "^5.0.0",
-    "sass-loader": "10.1.1"
+    "portal-vue": "^2.1.7",
+    "sass-loader": "10.1.1",
+    "typed.js": "^2.0.12"
   }
 }

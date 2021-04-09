@@ -70,11 +70,146 @@
   }
 }
 
-// Footer
-footer {
-  &.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+// Breadcrumb
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem 1.25rem;
+  margin-bottom: 0;
+  list-style: none;
+  border-radius: 200rem;
+
+  a {
+    transition: opacity 0.1s linear;
+
+    &:not(:hover) {
+      opacity: 0.75;
+    }
   }
+
+  &.is-primary {
+    background-color: rgba($primary, 0.1);
+  }
+
+  &.is-white {
+    background-color: rgba($white, 0.1);
+  }
+
+  li {
+    &.is-active {
+      a {
+        opacity: 0.55;
+      }
+    }
+  }
+}
+
+// Hero
+.hero {
+  position: relative;
+
+  .hero-background-image {
+    img {
+      position: absolute;
+      object-fit: cover;
+      opacity: 0.5;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    &.overlay:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0,
+        rgba(0, 0, 0, 0.65) 100%
+      );
+    }
+  }
+
+  .navbar {
+    &.has-shadow {
+      box-shadow: 0 0 0 0;
+
+      &.is-primary-dark {
+        border-bottom: 1px solid rgba($white, 0.08);
+      }
+
+      &.is-primary-light {
+        border-bottom: 1px solid rgba($white, 0.08);
+      }
+    }
+
+    .navbar-item {
+      font-weight: 600;
+      color: $white !important;
+      transition: color 0.2s ease;
+
+      &.has-dropdown {
+        .navbar-item {
+          color: $grey !important;
+
+          &:hover {
+            color: $grey-light !important;
+          }
+        }
+      }
+
+      &:hover {
+        background-color: transparent !important;
+        color: $grey-light !important;
+      }
+
+      &:focus {
+        background-color: transparent !important;
+      }
+
+      .navbar-link {
+        background-color: transparent !important;
+        color: $white !important;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: $grey-light !important;
+        }
+      }
+    }
+
+    &.is-light {
+      .navbar-item {
+        color: $grey-light !important;
+
+        &:hover {
+          color: $grey !important;
+        }
+      }
+
+      .navbar-brand {
+        .navbar-item {
+          p {
+            color: $primary-dark !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Code Block
+.code-block {
+  background: #282a36;
+  padding: 1.35em 0.8em;
+  border-radius: $radius;
+  font-family: "Consolas", "Courier New", "Courier", serif;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  transition: all 0.2s ease-in-out;
 }
