@@ -2,6 +2,8 @@
 
 Centralized Helm Chart documentation page.
 
+[Live Demo](https://charts.omegion.dev)
+
 ## Usage
 
 ```yaml
