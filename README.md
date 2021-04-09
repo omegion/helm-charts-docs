@@ -6,7 +6,7 @@ Centralized Helm Chart documentation page.
 
 ```yaml
 - name: Helm Chart Docs Github Pages
-  uses: omegion/helm-charts-docs@v0.15.0
+  uses: omegion/helm-charts-docs@v0.15
   with:
     helmRepository: omegion
     helmRepositoryUrl: https://charts.omegion.dev
